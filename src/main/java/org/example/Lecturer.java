@@ -1,8 +1,10 @@
+package org.example;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-class Lecturer {
+public class Lecturer {
     private String name;
     private String id;
     private List<String> availability;
@@ -39,3 +41,4 @@ class Lecturer {
         return teachingCourses;
     }
 }
+

@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +22,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "CENG-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer("Fadi Yilmaz", lecturerId);
-            Course course = new Course(courseCode, "Computer Engineering", creditHours,(i%7)+1);
+            Course course = new Course(courseCode, "Computer Engineering", creditHours,(i%8)+1);
             course.setLecturer(lecturer);
             computerEngineering.addCourse(course);
         }
@@ -31,7 +33,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "EEE-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer("Ahmet Karaaslan", lecturerId);
-            Course course = new Course(courseCode, "Electronic Engineering", creditHours,(i%7)+1);
+            Course course = new Course(courseCode, "Electronic Engineering", creditHours,(i%8)+1);
             course.setLecturer(lecturer);
             electronicEngineering.addCourse(course);
         }
@@ -54,6 +56,7 @@ public class Main {
             Classroom classroom = new Classroom(i, 50);
             classrooms.add(classroom);
         }
+
 
         for (Department department : university.getDepartments()) {
             System.out.println("Department: " + department.getName());

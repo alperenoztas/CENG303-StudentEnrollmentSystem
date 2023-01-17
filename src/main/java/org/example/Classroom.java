@@ -1,10 +1,12 @@
+package org.example;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
-class Classroom {
+public class Classroom {
     private int number;
     private int capacity;
     private Map<String, List<Course>> schedule;

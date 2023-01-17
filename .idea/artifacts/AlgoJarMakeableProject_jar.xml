@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AlgoJarMakeableProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AlgoJarMakeableProject_jar</output-path>
+    <root id="archive" name="AlgoJarMakeableProject.jar">
+      <element id="module-output" name="AlgoJarMakeableProject" />
+    </root>
+  </artifact>
+</component>

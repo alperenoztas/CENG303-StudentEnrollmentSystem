@@ -1,7 +1,9 @@
+package org.example;
+
 import java.util.List;
 import java.util.ArrayList;
 
-class Student {
+public class Student {
     private String name;
     private String id;
     private String department;
@@ -56,3 +58,4 @@ class Student {
         return courseChoices;
     }
 }
+

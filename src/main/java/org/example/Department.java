@@ -1,7 +1,9 @@
+package org.example;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class Department {
+public class Department {
     private String name;
     private String code;
     private List<Course> courses;
@@ -42,3 +44,4 @@ class Department {
     }
 
 }
+
