@@ -43,6 +43,12 @@ public class Course {
         this.semester = semester;
     }
 
+    public Course(String code,int creditHours,int semester) {
+        this.code = code;
+        this.creditHours = creditHours;
+        this.semester = semester;
+    }
+
 
     public void addMeetingTime(String time) {
         meetingTimes.add(time);

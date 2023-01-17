@@ -24,6 +24,7 @@ public class Main {
         university.addDepartment(energySystemsEngineering);
 
         Random rand = new Random();
+        university.addCommonCourses(university.getDepartments());
 
         //Computer Engineering Courses Creation
         for (int i = 1; i <= 30; i++) {
