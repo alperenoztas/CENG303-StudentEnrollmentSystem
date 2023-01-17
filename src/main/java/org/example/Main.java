@@ -57,6 +57,18 @@ public class Main {
             classrooms.add(classroom);
         }
 
+        // Create schedule
+        Scheduler scheduler = new Scheduler(classrooms, university);
+        scheduler.createSchedule();
+        for (Classroom classroom : classrooms) {
+            System.out.println("Classroom " + classroom.getNumber() + ":");
+            for (Map.Entry<String, List<Course>> entry : classroom.getSchedule().entrySet()) {
+                System.out.println("\t" + entry.getKey() + ":");
+                for (Course course : entry.getValue()) {
+                    System.out.println("\t\t" + course.getCode());
+                }
+            }
+        }
 
         for (Department department : university.getDepartments()) {
             System.out.println("Department: " + department.getName());
