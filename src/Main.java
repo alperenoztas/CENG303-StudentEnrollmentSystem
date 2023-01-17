@@ -20,7 +20,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "CENG-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer("Fadi Yilmaz", lecturerId);
-            Course course = new Course(courseCode, "Computer Engineering", creditHours);
+            Course course = new Course(courseCode, "Computer Engineering", creditHours,(i%7)+1);
             course.setLecturer(lecturer);
             computerEngineering.addCourse(course);
         }
@@ -31,7 +31,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "EEE-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer("Ahmet Karaaslan", lecturerId);
-            Course course = new Course(courseCode, "Electronic Engineering", creditHours);
+            Course course = new Course(courseCode, "Electronic Engineering", creditHours,(i%7)+1);
             course.setLecturer(lecturer);
             electronicEngineering.addCourse(course);
         }
@@ -59,7 +59,7 @@ public class Main {
             System.out.println("Department: " + department.getName());
             System.out.println("Courses:");
             for (Course course : department.getCourses()) {
-                System.out.println("\t" + course.getCode() + "\t" + course.getCreditHours() + "\t" + course.getLecturer().getName());
+                System.out.println("\t" + course.getCode() + "\t" + course.getCreditHours() +  "\t" + course.getSemester() + "\t" + course.getLecturer().getName());
             }
         }
     }

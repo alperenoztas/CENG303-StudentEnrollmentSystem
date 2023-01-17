@@ -6,6 +6,16 @@ class Course {
     private String code;
     private String department;
     private int creditHours;
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
+
+    private int semester;
     private Lecturer lecturer;
     private List<String> meetingTimes;
 
@@ -24,10 +34,11 @@ class Course {
         this.meetingTimes = new ArrayList<String>();
     }
 
-    public Course(String code, String department, int creditHours) {
+    public Course(String code, String department, int creditHours,int semester) {
         this.code = code;
         this.department = department;
         this.creditHours = creditHours;
+        this.semester = semester;
     }
 
 
