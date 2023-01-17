@@ -6,7 +6,7 @@ class Course {
     private String code;
     private String department;
     private int creditHours;
-    private String lecturer;
+    private Lecturer lecturer;
     private List<String> meetingTimes;
 
     private List<Student> students;
@@ -15,7 +15,7 @@ class Course {
 
 
 
-    public Course(String name, String code, String department, int creditHours, String lecturer) {
+    public Course(String name, String code, String department, int creditHours, Lecturer lecturer) {
         this.name = name;
         this.code = code;
         this.department = department;
@@ -60,11 +60,11 @@ class Course {
         return meetingTimes;
     }
 
-    public String getLecturer() {
+    public Lecturer getLecturer() {
         return lecturer;
     }
 
-    public void setLecturer(String lecturer) {
+    public void setLecturer(Lecturer lecturer) {
         this.lecturer = lecturer;
     }
 
