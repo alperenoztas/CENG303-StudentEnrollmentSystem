@@ -17,6 +17,7 @@ public class Classroom {
         this.schedule = new HashMap<>();
     }
 
+    //Check if the course is available in for the classroom
     public boolean isAvailable(Course course) {
         for (String meetingTime : course.getMeetingTimes()) {
             if (!schedule.containsKey(meetingTime)) {
@@ -28,6 +29,8 @@ public class Classroom {
         return false;
     }
 
+
+    //We assign course to the classroom with meeting time
     public void assignCourse(Course course) {
         for (String meetingTime : course.getMeetingTimes()) {
             if (!schedule.containsKey(meetingTime)) {
@@ -37,6 +40,7 @@ public class Classroom {
         }
     }
 
+    //Getters and setters
     public int getNumber() {
         return number;
     }

@@ -16,6 +16,7 @@ public class University {
         departments.add(department);
     }
 
+    //Add common course for each department so they can reach it and common
     public void addCommonCourses(List<Department> departments) {
         List<Course> commonCourses = new ArrayList<Course>();
         Lecturer lecturer = new Lecturer("Common Teacher", "20050151010");

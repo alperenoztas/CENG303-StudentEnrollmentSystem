@@ -15,6 +15,7 @@ public class Main {
         Department civilEngineering = new Department("Civil Engineering", "CE");
         Department energySystemsEngineering = new Department("Energy Systems Engineering", "CE");
 
+        //We add those departments into the university
         university.addDepartment(computerEngineering);
         university.addDepartment(electronicEngineering);
         university.addDepartment(industrialEngineering);
@@ -22,6 +23,7 @@ public class Main {
         university.addDepartment(civilEngineering);
         university.addDepartment(energySystemsEngineering);
 
+        //We set lecturers for each department from our InstructorGenerator class
         computerEngineering.setLecturers(InstructorGenerator.getCengLecturers());
         electronicEngineering.setLecturers(InstructorGenerator.getEeeLecturers());
         industrialEngineering.setLecturers(InstructorGenerator.getIeLecturers());
@@ -29,11 +31,16 @@ public class Main {
         civilEngineering.setLecturers(InstructorGenerator.getCeLecturers());
         energySystemsEngineering.setLecturers(InstructorGenerator.getEseLecturers());
 
+        //Get choice if you want to test the code or run it and add by yourself
         System.out.println("For Terminal Interface Enter 1\nFor Testing Enter 0 ");
         Scanner scanner = new Scanner(System.in);
         int runSpec = scanner.nextInt();
         Random rand = new Random();
+
+        //Faker library has added for student names so they wont be just ID's
         Faker faker = new Faker();
+
+
         university.addCommonCourses(university.getDepartments());
 
         //Computer Engineering Courses Creation
@@ -146,7 +153,7 @@ public class Main {
         }
 
 
-
+        //Test section
         if(runSpec == 0){
 
             List<Classroom> classrooms = new ArrayList<>();
@@ -178,6 +185,7 @@ public class Main {
             }
         }
 
+        //Command Line Interface section
         if(runSpec == 1){
 
             System.out.println("\nHi Welcome TO AYBU Student Portal\n");
@@ -300,9 +308,6 @@ public class Main {
                         break;
                 }
             }
-
-
         }
-
     }
 }

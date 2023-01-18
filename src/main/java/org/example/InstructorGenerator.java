@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+//We got these lecturer form AYBU Academic Personel List for each department
 public class InstructorGenerator {
 
     private static final List<String> cengLecturers = Arrays.asList("Fadi YILMAZ","Fatih Vehbi CELEBI", "Remzi YILDIRIM", "Mustafa YENIAD", "Shafqat ur REHMAN", "Osman Serdar GEDIK","Yusuf Evren AYKAC","Fatih NAR");

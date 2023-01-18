@@ -4,6 +4,8 @@ package org.example;
 import java.util.Arrays;
 import java.util.List;
 
+
+//We create this class for already given course names for make it more like Student Portal
 public class CourseGenerator {
 
     private static final List<String> cengCourses = Arrays.asList("Introduction to Programming", "Data Structures",
