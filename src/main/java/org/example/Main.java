@@ -22,6 +22,16 @@ public class Main {
         university.addDepartment(civilEngineering);
         university.addDepartment(energySystemsEngineering);
 
+        computerEngineering.setLecturers(InstructorGenerator.getCengLecturers());
+        electronicEngineering.setLecturers(InstructorGenerator.getEeeLecturers());
+        industrialEngineering.setLecturers(InstructorGenerator.getIeLecturers());
+        mechanicalEngineering.setLecturers(InstructorGenerator.getMeLecturers());
+        civilEngineering.setLecturers(InstructorGenerator.getCeLecturers());
+        energySystemsEngineering.setLecturers(InstructorGenerator.getEseLecturers());
+
+        System.out.println("For Terminal Interface Enter 1\nFor Testing Enter 0 ");
+        Scanner scanner = new Scanner(System.in);
+        int runSpec = scanner.nextInt();
         Random rand = new Random();
         Faker faker = new Faker();
         university.addCommonCourses(university.getDepartments());
@@ -135,38 +145,144 @@ public class Main {
             energySystemsEngineering.addStudent(student);
         }
 
-        /*
-        List<Classroom> classrooms = new ArrayList<>();
 
-        for (int i = 1; i <= 15; i++) {
-            Classroom classroom = new Classroom(i, 50);
-            classrooms.add(classroom);
-        }
 
-        // Create schedule
-        Scheduler scheduler = new Scheduler(classrooms, university);
-        scheduler.createSchedule();
-        for (Classroom classroom : classrooms) {
-            System.out.println("Classroom " + classroom.getNumber() + ":");
-            for (Map.Entry<String, List<Course>> entry : classroom.getSchedule().entrySet()) {
-                System.out.println("\t" + entry.getKey() + ":");
-                for (Course course : entry.getValue()) {
-                    System.out.println("\t\t" + course.getCode());
+        if(runSpec == 0){
+
+            List<Classroom> classrooms = new ArrayList<>();
+
+            for (int i = 1; i <= 15; i++) {
+                Classroom classroom = new Classroom(i, 50);
+                classrooms.add(classroom);
+            }
+
+            // Create schedule
+            Scheduler scheduler = new Scheduler(classrooms, university);
+            scheduler.createSchedule();
+            for (Classroom classroom : classrooms) {
+                System.out.println("Classroom " + classroom.getNumber() + ":");
+                for (Map.Entry<String, List<Course>> entry : classroom.getSchedule().entrySet()) {
+                    System.out.println("\t" + entry.getKey() + ":");
+                    for (Course course : entry.getValue()) {
+                        System.out.println("\t\t" + course.getCode());
+                    }
+                }
+            }
+            for (Department department : university.getDepartments()) {
+                System.out.println("Department: " + department.getName());
+                System.out.println("Courses:");
+                System.out.println("Code\t\tCourseName\t\t\t\t\tCredit\tSemester\tInstructor");
+                for (Course course : department.getCourses()) {
+                    System.out.printf("%s\t\t%-30s\t%d\t\t%s\t\t%s\n",course.getCode(),course.getName(),course.getCreditHours(),course.getSemester(),course.getLecturer().getName());
                 }
             }
         }
 
-        for (Department department : university.getDepartments()) {
-            System.out.println("Department: " + department.getName());
-            System.out.println("Courses:");
-            System.out.println("Code\t\tCourseName\t\t\t\t\tCredit\tSemester\tInstructor");
-            for (Course course : department.getCourses()) {
-                System.out.printf("%s\t\t%-30s\t%d\t\t%s\t\t%s\n",course.getCode(),course.getName(),course.getCreditHours(),course.getSemester(),course.getLecturer().getName());
+        if(runSpec == 1){
+
+            System.out.println("\nHi Welcome TO AYBU Student Portal\n");
+            while(true){
+                System.out.println("\nTo view departments in university enter 1: ");
+                System.out.println("To see lecturers enter 2");
+                System.out.println("To see courses enter 3");
+                System.out.println("To see whole students enter 4: ");
+                System.out.println("To check for a specific student enter 5: ");
+                System.out.println("To schedule classroom for courses enter 6: ");
+                System.out.println("To exit enter 7: ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+                switch (choice) {
+                    case 1:
+                        // view departments in university
+                        for (Department department : university.getDepartments()) {
+                            System.out.println(department.getName());
+                        }
+                        break;
+                    case 2:
+                        // view lecturers
+                        for (int i = 0; i < 5; i++) {
+                            System.out.println("\n"+university.getDepartments().get(i).getName() +"\n");
+                            for (String lecturer : university.getDepartments().get(i).getLecturers()) {
+                                System.out.println(lecturer);
+                            }
+                        }
+
+                        break;
+                    case 3:
+                        // view courses
+                        for (Department department : university.getDepartments()) {
+                            System.out.println("---------------------------------\n"+department.getName()+"\n---------------------------------");
+                            for (Course course : department.getCourses()) {
+                                System.out.println(course.getCode()+"\t"+course.getName()+"\t"+course.getCreditHours());
+                            }
+                        }
+                        break;
+                    case 4:
+                        // view students
+                        for (Department department : university.getDepartments()) {
+                            System.out.println("\n"+department.getName()+"\n");
+                            for (Student student : department.getStudents()) {
+                                System.out.println(String.format("%s\t%s\t\t%d", student.getId(), student.getName(), student.getGrade()));
+                            }
+                        }
+                        break;
+                    case 5:
+                        // check for specific student
+                        System.out.println("Enter student name:");
+                        String name = scanner.nextLine();
+                        boolean found = false;
+                        for (Department department : university.getDepartments()) {
+                            for (Student student : department.getStudents()) {
+                                if (student.getName().equalsIgnoreCase(name)) {
+                                    System.out.println("Student found:");
+                                    System.out.println("\tName: " + student.getName());
+                                    System.out.println("\tGrade: " + student.getGrade());
+                                    System.out.println("\tCourse choices:");
+                                    for (Course course : student.getCourseChoices()) {
+                                        System.out.println("\t\t" + course.getName());
+                                    }
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!found) {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+                    case 6:
+                        List<Classroom> classrooms = new ArrayList<>();
+
+                        for (int i = 1; i <= 15; i++) {
+                            Classroom classroom = new Classroom(i, 50);
+                            classrooms.add(classroom);
+                        }
+
+                        // Create schedule
+                        Scheduler scheduler = new Scheduler(classrooms, university);
+                        scheduler.createSchedule();
+                        for (Classroom classroom : classrooms) {
+                            System.out.println("Classroom " + classroom.getNumber() + ":");
+                            for (Map.Entry<String, List<Course>> entry : classroom.getSchedule().entrySet()) {
+                                System.out.println("\t" + entry.getKey() + ":");
+                                for (Course course : entry.getValue()) {
+                                    System.out.println("\t\t" + course.getCode());
+                                }
+                            }
+                        }
+                        break;
+                    case 7:
+                        // exit
+                        System.out.println("Exiting...");
+                        return;
+                    default:
+                        System.out.println("Invalid choice. Please enter a valid number.");
+                        break;
+                }
             }
+
+
         }
-        */
-        for(Student student : computerEngineering.getStudents()){
-            System.out.println(student.getName() + " " + student.getGrade());
-        }
+
     }
 }

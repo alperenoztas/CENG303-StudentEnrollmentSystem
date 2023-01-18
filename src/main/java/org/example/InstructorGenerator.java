@@ -38,4 +38,25 @@ public class InstructorGenerator {
         int index = rand.nextInt(eseLecturers.size());
         return eseLecturers.get(index);
     }
+
+    public static List<String> getCengLecturers() {
+        return cengLecturers;
+    }
+
+    public static List<String> getEeeLecturers() {
+        return eeeLecturers;
+    }
+    public static List<String> getIeLecturers() {
+        return ieLecturers;
+    }
+
+    public static List<String> getMeLecturers() {
+        return meLecturers;
+    }
+    public static List<String> getCeLecturers() {
+        return ceLecturers;
+    }public static List<String> getEseLecturers() {
+        return eseLecturers;
+    }
+
 }

@@ -8,7 +8,9 @@ public class Department {
     private String code;
     private List<Course> courses;
 
+    private List<String> lecturers;
     private List<Student> students;
+
 
 
     public Department(String name, String code) {
@@ -39,6 +41,13 @@ public class Department {
         return students;
     }
 
+    public List<String> getLecturers() {
+        return lecturers;
+    }
+
+    public void setLecturers(List<String> lecturers) {
+        this.lecturers = lecturers;
+    }
     public void addStudent(Student student) {
         students.add(student);
     }
