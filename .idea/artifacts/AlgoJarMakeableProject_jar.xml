@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="enrollment:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/enrollment_jar</output-path>
+  <artifact type="jar" name="AlgoJarMakeableProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AlgoJarMakeableProject_jar</output-path>
     <root id="archive" name="AlgoJarMakeableProject.jar">
       <element id="module-output" name="AlgoJarMakeableProject" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar" path-in-jar="/" />
