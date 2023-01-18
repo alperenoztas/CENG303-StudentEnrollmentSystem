@@ -187,8 +187,9 @@ public class Main {
                 System.out.println("To see courses enter 3");
                 System.out.println("To see whole students enter 4: ");
                 System.out.println("To check for a specific student enter 5: ");
-                System.out.println("To schedule classroom for courses enter 6: ");
-                System.out.println("To exit enter 7: ");
+                System.out.println("To add course to student enter 6: ");
+                System.out.println("To schedule classroom for courses enter 7: ");
+                System.out.println("To exit enter 8: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
                 switch (choice) {
@@ -251,6 +252,25 @@ public class Main {
                         }
                         break;
                     case 6:
+                        // add course choice for student
+                        System.out.println("Enter student name:");
+                        String stuname = scanner.nextLine();
+                        boolean stufound = false;
+                        for (Department department : university.getDepartments()) {
+                            for (Student student : department.getStudents()) {
+                                if (student.getName().equalsIgnoreCase(stuname)) {
+                                    stufound = true;
+                                    student.selectCourses();
+                                    break;
+                                }
+                            }
+                        }
+                        if (!stufound) {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+
+                    case 7:
                         List<Classroom> classrooms = new ArrayList<>();
 
                         for (int i = 1; i <= 15; i++) {
@@ -271,7 +291,7 @@ public class Main {
                             }
                         }
                         break;
-                    case 7:
+                    case 8:
                         // exit
                         System.out.println("Exiting...");
                         return;
