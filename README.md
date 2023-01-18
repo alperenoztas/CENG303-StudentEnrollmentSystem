@@ -10,5 +10,4 @@
 
 
 ###How to run
-
-- java -jar enrollment.jar
+-**java -jar enrollment.jar **
