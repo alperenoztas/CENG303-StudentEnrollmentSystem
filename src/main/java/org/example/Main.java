@@ -1,5 +1,7 @@
 package org.example;
 
+import com.github.javafaker.Faker;
+
 import java.util.*;
 
 public class Main {
@@ -21,6 +23,7 @@ public class Main {
         university.addDepartment(energySystemsEngineering);
 
         Random rand = new Random();
+        Faker faker = new Faker();
         university.addCommonCourses(university.getDepartments());
 
         //Computer Engineering Courses Creation
@@ -29,7 +32,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "CENG-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer( InstructorGenerator.getRandomCengLecturer(),lecturerId);
-            Course course = new Course(courseCode, "Computer Engineering", creditHours,(i%8)+1);
+            Course course = new Course(courseCode, computerEngineering, creditHours,(i%8)+1);
             course.setName(CourseGenerator.getCengCourses().get(i));
             course.setLecturer(lecturer);
             computerEngineering.addCourse(course);
@@ -41,7 +44,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "EEE-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomEeeLecturer(), lecturerId);
-            Course course = new Course(courseCode, "Electronic Engineering", creditHours,(i%8)+1);
+            Course course = new Course(courseCode, electronicEngineering, creditHours,(i%8)+1);
             course.setName(CourseGenerator.getEeeCourses().get(i));
             course.setLecturer(lecturer);
             electronicEngineering.addCourse(course);
@@ -53,7 +56,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "IE-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomIeLecturer(), lecturerId);
-            Course course = new Course(courseCode, "Industrial Engineering", creditHours,(i%8)+1);
+            Course course = new Course(courseCode, industrialEngineering, creditHours,(i%8)+1);
             course.setName(CourseGenerator.getIeCourses().get(i));
             course.setLecturer(lecturer);
             industrialEngineering.addCourse(course);
@@ -65,7 +68,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "ME-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomMeLecturer(), lecturerId);
-            Course course = new Course(courseCode, "Mechanical Engineering", creditHours,(i%8)+1);
+            Course course = new Course(courseCode, mechanicalEngineering, creditHours,(i%8)+1);
             course.setName(CourseGenerator.getMeCourses().get(i));
             course.setLecturer(lecturer);
             mechanicalEngineering.addCourse(course);
@@ -77,7 +80,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "CE-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomCeLecturer(), lecturerId);
-            Course course = new Course(courseCode, "Civil Engineering", creditHours,(i%8)+1);
+            Course course = new Course(courseCode, civilEngineering, creditHours,(i%8)+1);
             course.setName(CourseGenerator.getCeCourses().get(i));
             course.setLecturer(lecturer);
             civilEngineering.addCourse(course);
@@ -89,7 +92,7 @@ public class Main {
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "ESE-Lecturer" + String.format("%03d", i);
             Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomEseLecturer(), lecturerId);
-            Course course = new Course(courseCode, "Energy Systems Engineering", creditHours,(i%8)+1);
+            Course course = new Course(courseCode, energySystemsEngineering, creditHours,(i%8)+1);
             course.setName(CourseGenerator.getEseCourses().get(i));
             course.setLecturer(lecturer);
             energySystemsEngineering.addCourse(course);
@@ -98,39 +101,40 @@ public class Main {
         //We create 200 students for CENG Department here
         for (int i = 1; i <= 200; i++) {
             String studentId = "CENG-Student" + String.format("%03d", i);
-            Student student = new Student(studentId, "Computer Engineering");
+            Student student = new Student(faker.name().fullName(),studentId, computerEngineering,(i%4)+1);
             computerEngineering.addStudent(student);
         }
         //We create 200 students for EEE Department here
         for (int i = 1; i <= 200; i++) {
             String studentId = "EEE-Student" + String.format("%03d", i);
-            Student student = new Student(studentId, "Electric and Electronic Engineering");
+            Student student = new Student(faker.name().fullName(),studentId, electronicEngineering,(i%4)+1);
             electronicEngineering.addStudent(student);
         }
         //We create 200 students for IE Department here
         for (int i = 1; i <= 200; i++) {
             String studentId = "IE-Student" + String.format("%03d", i);
-            Student student = new Student(studentId, "Industrial Engineering");
+            Student student = new Student(faker.name().fullName(),studentId, industrialEngineering,(i%4)+1);
             industrialEngineering.addStudent(student);
         }
         //We create 200 students for ME Department here
         for (int i = 1; i <= 200; i++) {
             String studentId = "ME-Student" + String.format("%03d", i);
-            Student student = new Student(studentId, "Mechanical Engineering");
+            Student student = new Student(faker.name().fullName(),studentId, mechanicalEngineering,(i%4)+1);
             mechanicalEngineering.addStudent(student);
         }
         //We create 200 students for CE Department here
         for (int i = 1; i <= 200; i++) {
             String studentId = "CE-Student" + String.format("%03d", i);
-            Student student = new Student(studentId, "Civil Engineering");
+            Student student = new Student(faker.name().fullName(),studentId, civilEngineering,(i%4)+1);
             civilEngineering.addStudent(student);
         }
         //We create 200 students for ESE Department here
         for (int i = 1; i <= 200; i++) {
             String studentId = "ESE-Student" + String.format("%03d", i);
-            Student student = new Student(studentId, "Energy Systems Engineering");
+            Student student = new Student(faker.name().fullName(),studentId, energySystemsEngineering,(i%4)+1);
             energySystemsEngineering.addStudent(student);
         }
+
         /*
         List<Classroom> classrooms = new ArrayList<>();
 
@@ -161,32 +165,8 @@ public class Main {
             }
         }
         */
-        Scanner scanner = new Scanner(System.in);
-
-        for (int i = 1; i <= 6; i++) {
-            System.out.println("Enter course code " + i + ":");
-            String courseCode = scanner.nextLine();
-            Course selectedCourse = null;
-            // check if the entered course code is valid
-            Student student = computerEngineering.getStudents().get(0);
-            Department d = computerEngineering;
-            for (Course course : d.getCourses() ) {
-                if (course.getCode().equals(courseCode)) {
-                    selectedCourse = course;
-                    break;
-                }
-            }
-            if(courseCode.equalsIgnoreCase("exit")){
-                break;
-            }
-            if (selectedCourse == null) {
-                System.out.println("Invalid course code, please enter a valid code.");
-                i--; // decrement the counter so the user can enter a new course
-            } else {
-                student.addCourseChoice(selectedCourse);
-                System.out.println("Course added: " + selectedCourse.getName());
-            }
+        for(Student student : computerEngineering.getStudents()){
+            System.out.println(student.getName() + " " + student.getGrade());
         }
-        System.out.println(computerEngineering.getStudents().get(0).getId()+"  "+computerEngineering.getStudents().get(0).getCourseChoices().get(0).getName());
     }
 }

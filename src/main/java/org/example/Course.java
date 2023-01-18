@@ -8,16 +8,8 @@ public class Course {
 
     private String name;
     private String code;
-    private String department;
+    private Department department;
     private int creditHours;
-
-    public int getSemester() {
-        return semester;
-    }
-
-    public void setSemester(int semester) {
-        this.semester = semester;
-    }
 
     private int semester;
     private Lecturer lecturer;
@@ -29,7 +21,7 @@ public class Course {
 
 
 
-    public Course(String name, String code, String department, int creditHours, Lecturer lecturer) {
+    public Course(String name, String code, Department department, int creditHours, Lecturer lecturer) {
         this.name = name;
         this.code = code;
         this.department = department;
@@ -38,7 +30,7 @@ public class Course {
         this.meetingTimes = new ArrayList<String>();
     }
 
-    public Course(String name, String code, String department, int creditHours,int semester, Lecturer lecturer) {
+    public Course(String name, String code, Department department, int creditHours,int semester, Lecturer lecturer) {
         this.name = name;
         this.code = code;
         this.department = department;
@@ -48,7 +40,7 @@ public class Course {
         this.meetingTimes = new ArrayList<String>();
     }
 
-    public Course(String code, String department, int creditHours,int semester) {
+    public Course(String code, Department department, int creditHours,int semester) {
         this.code = code;
         this.department = department;
         this.creditHours = creditHours;
@@ -61,7 +53,13 @@ public class Course {
         this.semester = semester;
     }
 
+    public int getSemester() {
+        return semester;
+    }
 
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
     public void addMeetingTime(String time) {
         meetingTimes.add(time);
     }
@@ -78,7 +76,7 @@ public class Course {
         return code;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
