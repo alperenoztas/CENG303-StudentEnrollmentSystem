@@ -268,6 +268,9 @@ public class Main {
                             for (Student student : department.getStudents()) {
                                 if (student.getName().equalsIgnoreCase(stuname)) {
                                     stufound = true;
+                                    for (Course course : student.getDepartment().getCourses()){
+                                        System.out.println(course.getCode() + " \t" + course.getName());
+                                    }
                                     student.selectCourses();
                                     break;
                                 }
