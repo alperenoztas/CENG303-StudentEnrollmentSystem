@@ -18,12 +18,15 @@ public class University {
 
     public void addCommonCourses(List<Department> departments) {
         List<Course> commonCourses = new ArrayList<Course>();
-        commonCourses.add(new Course("MATH-01",5, 2));
-        commonCourses.add(new Course("MATH-02", 4,1));
+        Lecturer lecturer = new Lecturer("Common Teacher", "20050151010");
+        commonCourses.add(new Course("Calculus I","MATH101","UNIVERSITY",5,1, lecturer));
+        commonCourses.add(new Course("Calculus II","MATH102","UNIVERSITY",5,1, lecturer));
+        commonCourses.add(new Course("Linear Algebra","MATH103","UNIVERSITY",5,2, lecturer));
+        commonCourses.add(new Course("Differential Equations","MATH104","UNIVERSITY",5,3, lecturer));
+        commonCourses.add(new Course("Physics I","PHYS101","UNIVERSITY",5,1, lecturer));
+        commonCourses.add(new Course("Physics II","PHYS102","UNIVERSITY",5,2, lecturer));
         for (Department department : departments) {
-            for (int i = 0; i < 2; i++) {
-                Lecturer lecturer = new Lecturer("Common Teacher", "20050151010");
-                commonCourses.get(i).setLecturer(lecturer);
+            for (int i = 0; i < 6; i++) {
                 department.addCourse(commonCourses.get(i));
             }
         }

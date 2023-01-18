@@ -27,67 +27,73 @@ public class Main {
         university.addCommonCourses(university.getDepartments());
 
         //Computer Engineering Courses Creation
-        for (int i = 1; i <= 30; i++) {
+        for (int i = 0; i < CourseGenerator.getCengCourses().size() ; i++) {
             String courseCode = "CENG" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "CENG-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer( Instructors.getRandomCengLecturer(),lecturerId);
+            Lecturer lecturer = new Lecturer( InstructorGenerator.getRandomCengLecturer(),lecturerId);
             Course course = new Course(courseCode, "Computer Engineering", creditHours,(i%8)+1);
+            course.setName(CourseGenerator.getCengCourses().get(i));
             course.setLecturer(lecturer);
             computerEngineering.addCourse(course);
         }
 
         //Electric and Electronical Engineering Courses Creation
-        for (int i = 1; i <= 30; i++) {
+        for (int i = 0; i < CourseGenerator.getEeeCourses().size(); i++) {
             String courseCode = "EEE" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "EEE-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer(Instructors.getRandomEeeLecturer(), lecturerId);
+            Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomEeeLecturer(), lecturerId);
             Course course = new Course(courseCode, "Electronic Engineering", creditHours,(i%8)+1);
+            course.setName(CourseGenerator.getEeeCourses().get(i));
             course.setLecturer(lecturer);
             electronicEngineering.addCourse(course);
         }
 
         //Industrial Engineering Courses Creation
-        for (int i = 1; i <= 30; i++) {
+        for (int i = 0; i < CourseGenerator.getIeCourses().size(); i++) {
             String courseCode = "IE" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "IE-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer(Instructors.getRandomIeLecturer(), lecturerId);
+            Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomIeLecturer(), lecturerId);
             Course course = new Course(courseCode, "Industrial Engineering", creditHours,(i%8)+1);
+            course.setName(CourseGenerator.getIeCourses().get(i));
             course.setLecturer(lecturer);
             industrialEngineering.addCourse(course);
         }
 
         //Mechanical Engineering Courses Creation
-        for (int i = 1; i <= 30; i++) {
+        for (int i = 0; i < CourseGenerator.getMeCourses().size(); i++) {
             String courseCode = "ME" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "ME-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer(Instructors.getRandomMeLecturer(), lecturerId);
+            Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomMeLecturer(), lecturerId);
             Course course = new Course(courseCode, "Mechanical Engineering", creditHours,(i%8)+1);
+            course.setName(CourseGenerator.getMeCourses().get(i));
             course.setLecturer(lecturer);
             mechanicalEngineering.addCourse(course);
         }
 
         //Civil Engineering Courses Creation
-        for (int i = 1; i <= 30; i++) {
+        for (int i = 0; i < CourseGenerator.getCeCourses().size(); i++) {
             String courseCode = "CE" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "CE-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer(Instructors.getRandomCeLecturer(), lecturerId);
+            Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomCeLecturer(), lecturerId);
             Course course = new Course(courseCode, "Civil Engineering", creditHours,(i%8)+1);
+            course.setName(CourseGenerator.getCeCourses().get(i));
             course.setLecturer(lecturer);
             civilEngineering.addCourse(course);
         }
 
         //Energy Systems Engineering Courses Creation
-        for (int i = 1; i <= 30; i++) {
+        for (int i = 0; i < CourseGenerator.getEseCourses().size(); i++) {
             String courseCode = "ESE" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "ESE-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer(Instructors.getRandomEseLecturer(), lecturerId);
+            Lecturer lecturer = new Lecturer(InstructorGenerator.getRandomEseLecturer(), lecturerId);
             Course course = new Course(courseCode, "Energy Systems Engineering", creditHours,(i%8)+1);
+            course.setName(CourseGenerator.getEseCourses().get(i));
             course.setLecturer(lecturer);
             energySystemsEngineering.addCourse(course);
         }
@@ -152,11 +158,12 @@ public class Main {
         for (Department department : university.getDepartments()) {
             System.out.println("Department: " + department.getName());
             System.out.println("Courses:");
-            System.out.println("\tCode\tCredit\tSemester\tInstructor");
+            System.out.println("Code\t\tCourseName\t\t\t\t\tCredit\tSemester\tInstructor");
             for (Course course : department.getCourses()) {
-                System.out.println("\t" + course.getCode() + "\t\t" + course.getCreditHours() +  "\t\t" + course.getSemester() + "\t\t" + course.getLecturer().getName());
+                System.out.printf("%s\t\t%-30s\t%d\t\t%s\t\t%s\n",course.getCode(),course.getName(),course.getCreditHours(),course.getSemester(),course.getLecturer().getName());
             }
         }
+
 
     }
 }

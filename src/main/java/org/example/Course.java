@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
+
+
     private String name;
     private String code;
     private String department;
@@ -36,6 +38,16 @@ public class Course {
         this.meetingTimes = new ArrayList<String>();
     }
 
+    public Course(String name, String code, String department, int creditHours,int semester, Lecturer lecturer) {
+        this.name = name;
+        this.code = code;
+        this.department = department;
+        this.creditHours = creditHours;
+        this.semester = semester;
+        this.lecturer = lecturer;
+        this.meetingTimes = new ArrayList<String>();
+    }
+
     public Course(String code, String department, int creditHours,int semester) {
         this.code = code;
         this.department = department;
@@ -56,6 +68,10 @@ public class Course {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCode() {

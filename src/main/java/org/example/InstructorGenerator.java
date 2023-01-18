@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class Instructors {
+public class InstructorGenerator {
 
     private static final List<String> cengLecturers = Arrays.asList("Fadi YILMAZ","Fatih Vehbi CELEBI", "Remzi YILDIRIM", "Mustafa YENIAD", "Shafqat ur REHMAN", "Osman Serdar GEDIK","Yusuf Evren AYKAC","Fatih NAR");
     private static final List<String> eeeLecturers= Arrays.asList("Ahmet KARAASLAN", "Asaf Behzat SAHIN", "Serafettin EREL", "Huseyin CANBOLAT", "Ilyas CANKAYA","Serdar OZYURT","Sinan KIVRAK","Thamar Al MASHHDDANI");
