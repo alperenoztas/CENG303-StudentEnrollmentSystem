@@ -31,7 +31,7 @@ public class Main {
             String courseCode = "CENG" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "CENG-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer("Fadi Yilmaz", lecturerId);
+            Lecturer lecturer = new Lecturer( Instructors.getRandomCengLecturer(),lecturerId);
             Course course = new Course(courseCode, "Computer Engineering", creditHours,(i%8)+1);
             course.setLecturer(lecturer);
             computerEngineering.addCourse(course);
@@ -42,7 +42,7 @@ public class Main {
             String courseCode = "EEE" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "EEE-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer("Ahmet Karaaslan", lecturerId);
+            Lecturer lecturer = new Lecturer(Instructors.getRandomEeeLecturer(), lecturerId);
             Course course = new Course(courseCode, "Electronic Engineering", creditHours,(i%8)+1);
             course.setLecturer(lecturer);
             electronicEngineering.addCourse(course);
@@ -53,7 +53,7 @@ public class Main {
             String courseCode = "IE" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "IE-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer("Alperen Oztas", lecturerId);
+            Lecturer lecturer = new Lecturer(Instructors.getRandomIeLecturer(), lecturerId);
             Course course = new Course(courseCode, "Industrial Engineering", creditHours,(i%8)+1);
             course.setLecturer(lecturer);
             industrialEngineering.addCourse(course);
@@ -64,7 +64,7 @@ public class Main {
             String courseCode = "ME" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "ME-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer("Mert Kanak", lecturerId);
+            Lecturer lecturer = new Lecturer(Instructors.getRandomMeLecturer(), lecturerId);
             Course course = new Course(courseCode, "Mechanical Engineering", creditHours,(i%8)+1);
             course.setLecturer(lecturer);
             mechanicalEngineering.addCourse(course);
@@ -75,7 +75,7 @@ public class Main {
             String courseCode = "CE" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "CE-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer("Duygu Baday", lecturerId);
+            Lecturer lecturer = new Lecturer(Instructors.getRandomCeLecturer(), lecturerId);
             Course course = new Course(courseCode, "Civil Engineering", creditHours,(i%8)+1);
             course.setLecturer(lecturer);
             civilEngineering.addCourse(course);
@@ -86,7 +86,7 @@ public class Main {
             String courseCode = "ESE" + String.format("%03d", i);
             int creditHours = rand.nextInt(3) + 3;
             String lecturerId = "ESE-Lecturer" + String.format("%03d", i);
-            Lecturer lecturer = new Lecturer("Ilknur Yigit", lecturerId);
+            Lecturer lecturer = new Lecturer(Instructors.getRandomEseLecturer(), lecturerId);
             Course course = new Course(courseCode, "Energy Systems Engineering", creditHours,(i%8)+1);
             course.setLecturer(lecturer);
             energySystemsEngineering.addCourse(course);
@@ -129,7 +129,7 @@ public class Main {
             energySystemsEngineering.addStudent(student);
         }
 
-        List<Classroom> classrooms = new ArrayList<Classroom>();
+        List<Classroom> classrooms = new ArrayList<>();
 
         for (int i = 1; i <= 15; i++) {
             Classroom classroom = new Classroom(i, 50);
@@ -152,14 +152,11 @@ public class Main {
         for (Department department : university.getDepartments()) {
             System.out.println("Department: " + department.getName());
             System.out.println("Courses:");
+            System.out.println("\tCode\tCredit\tSemester\tInstructor");
             for (Course course : department.getCourses()) {
-                System.out.println("\t" + course.getCode() + "\t" + course.getCreditHours() +  "\t" + course.getSemester() + "\t" + course.getLecturer().getName());
+                System.out.println("\t" + course.getCode() + "\t\t" + course.getCreditHours() +  "\t\t" + course.getSemester() + "\t\t" + course.getLecturer().getName());
             }
         }
-        /*
-        for (Student student : civilEngineering.getStudents()){
-            System.out.println(student.getId());
-        }
-        */
+
     }
 }

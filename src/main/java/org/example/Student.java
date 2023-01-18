@@ -10,14 +10,14 @@ public class Student {
     private int semester;
 
     private List<Course> courses;
-    private List<String> courseChoices;
+    private List<Course> courseChoices;
 
     public Student(String name, String id, String department, int year) {
         this.name = name;
         this.id = id;
         this.department = department;
         this.semester = semester;
-        this.courseChoices = new ArrayList<String>();
+        this.courseChoices = new ArrayList<Course>();
     }
 
     public Student(String id, String department) {
@@ -30,7 +30,7 @@ public class Student {
 
 
 
-    public void addCourseChoice(String course) {
+    public void addCourseChoice(Course course) {
         courseChoices.add(course);
     }
 
@@ -54,7 +54,7 @@ public class Student {
         return courses;
     }
 
-    public List<String> getCourseChoices() {
+    public List<Course> getCourseChoices() {
         return courseChoices;
     }
 }
