@@ -55,8 +55,12 @@ public class Student {
             if (selectedCourse == null) {
                 System.out.println("Invalid course code, please enter a valid code.");
             } else {
-                addCourseChoice(selectedCourse);
-                System.out.println("Course added: " + selectedCourse.getName());
+                if (selectedCourse.getSemester() == this.grade + 2 || selectedCourse.getSemester() == this.grade - 2) {
+                    addCourseChoice(selectedCourse);
+                    System.out.println("Course added: " + selectedCourse.getName());
+                } else {
+                    System.out.println("This course is not within the grade level constraint.");
+                }
             }
         }
     }
