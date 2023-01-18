@@ -24,6 +24,7 @@ public class Student {
         this.id = id;
         this.department = department;
         this.courses = new ArrayList<Course>();
+        this.courseChoices = new ArrayList<Course>();
     }
 
 

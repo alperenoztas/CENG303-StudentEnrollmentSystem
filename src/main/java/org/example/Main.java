@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
 
@@ -134,7 +131,7 @@ public class Main {
             Student student = new Student(studentId, "Energy Systems Engineering");
             energySystemsEngineering.addStudent(student);
         }
-
+        /*
         List<Classroom> classrooms = new ArrayList<>();
 
         for (int i = 1; i <= 15; i++) {
@@ -163,7 +160,33 @@ public class Main {
                 System.out.printf("%s\t\t%-30s\t%d\t\t%s\t\t%s\n",course.getCode(),course.getName(),course.getCreditHours(),course.getSemester(),course.getLecturer().getName());
             }
         }
+        */
+        Scanner scanner = new Scanner(System.in);
 
-
+        for (int i = 1; i <= 6; i++) {
+            System.out.println("Enter course code " + i + ":");
+            String courseCode = scanner.nextLine();
+            Course selectedCourse = null;
+            // check if the entered course code is valid
+            Student student = computerEngineering.getStudents().get(0);
+            Department d = computerEngineering;
+            for (Course course : d.getCourses() ) {
+                if (course.getCode().equals(courseCode)) {
+                    selectedCourse = course;
+                    break;
+                }
+            }
+            if(courseCode.equalsIgnoreCase("exit")){
+                break;
+            }
+            if (selectedCourse == null) {
+                System.out.println("Invalid course code, please enter a valid code.");
+                i--; // decrement the counter so the user can enter a new course
+            } else {
+                student.addCourseChoice(selectedCourse);
+                System.out.println("Course added: " + selectedCourse.getName());
+            }
+        }
+        System.out.println(computerEngineering.getStudents().get(0).getId()+"  "+computerEngineering.getStudents().get(0).getCourseChoices().get(0).getName());
     }
 }
